@@ -21,7 +21,7 @@ export function setErrorUser(payload) {
 export function fetchUser() {
   return function(dispatch) {
     axios.get('https://randomuser.me/api/?results=20')
-      .then(({ data }) => dispatch(setUser(data)))
+      .then(({ data }) => dispatch(setUser(data.results)))
       .catch(err => dispatch(setErrorUser(err)))
       .finally(() => dispatch(setLoadingUser(false)))
   }

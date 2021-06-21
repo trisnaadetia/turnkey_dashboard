@@ -27,7 +27,34 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="mt-10">
-        
+      <div className="w-1/4 mb-4">
+          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="search" type="text" placeholder="Search user here..."
+            name="keyword"
+          />
+        </div>
+        <table className="min-w-full shadow leading-normal">
+          <thead>
+            <tr>
+              <th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left font-bold text-sm uppercase font-normal">
+                User
+              </th>
+              <th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left font-bold text-sm uppercase font-normal">
+                Email
+              </th>
+              <th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left font-bold text-sm uppercase font-normal">
+                Phone
+              </th>
+              <th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left font-bold text-sm uppercase font-normal">
+                Location
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              userData.map(user => <TableData user={user}/>)
+            }
+          </tbody>
+        </table>
       </div>
     </div>
   )
