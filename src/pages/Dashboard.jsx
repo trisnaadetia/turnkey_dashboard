@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchUser } from '../store/action'
 import TableData from '../components/TableData'
 import LoadingPlacehoder from '../components/LoadingPlaceholder'
+import Pagination from '../components/Pagination'
 
 export default function Dashboard() {
   const dispatch = useDispatch()
   const loading = useSelector(state => state.loading)
-  const userData = useSelector(state => state.userData)
+  const userData = useSelector(state => state.userPerPage)
 
   useEffect(() => {
     dispatch(fetchUser())
@@ -27,11 +28,6 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="mt-10">
-      <div className="w-1/4 mb-4">
-          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="search" type="text" placeholder="Search user here..."
-            name="keyword"
-          />
-        </div>
         <table className="min-w-full shadow leading-normal">
           <thead>
             <tr>
@@ -51,11 +47,12 @@ export default function Dashboard() {
           </thead>
           <tbody>
             {
-              userData.map(user => <TableData user={user}/>)
+              userData.map((user, idx) => <TableData key={idx} user={user}/>)
             }
           </tbody>
         </table>
       </div>
+      <Pagination/>
     </div>
   )
 }
